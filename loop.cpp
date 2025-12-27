@@ -1,5 +1,5 @@
-#include "loop.hpp"
-#include "curses.h"
+#include "headers/loop.hpp"
+#include "headers/curses.h"
 
 Loop::Loop() : m(15, 15), c(m.getSize()) {}
 

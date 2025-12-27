@@ -1,4 +1,4 @@
-#include "cursor.hpp"
+#include "headers/cursor.hpp"
 #include <vector>
 
 Cursor::Cursor(const int MAP_SIZE) : MAP_SIZE(this->MAP_SIZE) {}

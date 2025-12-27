@@ -1,5 +1,5 @@
-#include "map.hpp"
-#include "cursor.hpp"
+#include "headers/map.hpp"
+#include "headers/cursor.hpp"
 
 Map::Map(int w, int h) : width(w), height(h), tiles(w * h) {}
 

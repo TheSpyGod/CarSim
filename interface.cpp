@@ -1,6 +1,6 @@
-#include "interface.hpp"
-#include "curses.h"
-#include "cursor.hpp"
+#include "headers/interface.hpp"
+#include "headers/curses.h"
+#include "headers/cursor.hpp"
 
 void Interface::printMap(std::vector<char> map, int width) {
     for (int i = 0; i < map.size(); i++) {
