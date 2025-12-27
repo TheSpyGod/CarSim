@@ -1,3 +1,4 @@
+#pragma once
 #include <utility>
 
 class Entity {
@@ -5,15 +6,8 @@ private:
     std::pair<int, int> pos;
     
 public:
-    void set(int x, int y) {
-        pos.first = x;
-        pos.second = y;
-    }
+    void set(int x, int y);
 
-    std::pair<int, int> get() {
-        return pos;
-    }
-
-      
+    std::pair<int, int> get();
 
 };
