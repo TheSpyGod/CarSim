@@ -1,2 +1,6 @@
 *.exe
+*.out
+*.txt
 start
+backup
+backup/*
