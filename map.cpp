@@ -1,87 +1,82 @@
+//TODO
+// - Fix player movement 
+// - Implemnet proper Entities
+
 #include "headers/map.hpp"
-#include "headers/cursor.hpp"
+Map::Map(int w, int h) : width(w), height(h) {}
 
-Map::Map(int w, int h) : width(w), height(h), tiles(w * h) {}
-
-char Map::getItem(int x, int y) const {
-    return tiles[y * width + x];
+Entity* Map::getItem(int x, int y) const {
+    return mapGrid[x][y];
 }
 
-std::vector<char> Map::getMap() const {
-    return tiles;
+std::vector<std::vector<Entity*>> Map::getMap() const {
+    return mapGrid;
 }
 
-int Map::getWidth() const {
-    return width;
-}
-
-std::pair<int, int> Map::getItemPos(char target) const {
-    for (int i = 0; i < tiles.size(); ++i) {
-        if (tiles[i] == target) {
-            int x = i % width;
-            int y = i / width;
-            return std::make_pair(x,y);
+std::pair<int, int> Map::getItemPos(Entity target) const {
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; j++) {
+            if (mapGrid[i][j] == target) return std::make_pair(x,y);
         }
     }
     return {0,0};
 }
 
-void Map::set(int x, int y, char value) {
-    tiles[y * width + x] = value;
+void Map::set(int x, int y, Entity target) {
 }
 
-int Map::getSize() const {
-    return height * width;
-}
-
-int Map::checkIfExists(char icon) const {
-    for (char c : tiles) {
-        if (c == icon)
-            return true;
+bool Map::checkIfExists(Entity target) const {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if (mapGrid[i][j] == target) return true;
+        }
     }
     return false;
 }
 
 bool Map::checkIfCanMove(int x, int y) const {
-    return (x >= 0 && x < height) &&
-           (y >= 0 && y < width);
+    return (x >= 0 && x < height) && (y >= 0 && y < width);
 }
 
-void Map::move(int x, int y, char icon) {
+void Map::move(int x, int y, Entity target) {
 //TODO icon is redundant, make it differenciate between player, enemy, obstacle and item
-    if (checkIfCanMove(x,y))
-        set(x,y,icon);
+    if (checkIfCanMove(x,y)) mapGrid[x][y] = target;
 }
 
-bool Map::checkScene(Cursor c) const {
-    if (tiles[c.getX() * c.getY()] != '0')
-        return true;
-    else
-        return false;
+void Map::checkScene(int x, int y) {
+    int c = tiles[x * y];
+    if (c == '0') return;
+
+    if (c == '&') // Enemy
+    else if (c == '$') //Item
 }
 
 void Map::movePlayer(int direction) {
-    std::pair<int, int> playerPos = getItemPos('p');
+    
     //TODO Add in the Cursor implementation and movement   
     switch (direction) {
         case 'w':
-            move(playerPos.first-1, playerPos.second, 'p');
-            move(playerPos.first, playerPos.second,'0');
+            move(x-1, y, 'p');
+            move(x, y,'0');
+            checkScene(x-1,y);
         break;
 
         case 's':
-            move(playerPos.first+1, playerPos.second, 'p');
-            move(playerPos.first, playerPos.second,'0');
+            move(x+1, y, 'p');
+            move(x, y,'0');
+            checkScene(x+1,y);
         break;
 
         case 'a':
-            move(playerPos.first, playerPos.second-1, 'p');
-            move(playerPos.first, playerPos.second,'0');
+            move(x, y-1, 'p');
+            move(x, y,'0');
+            checkScene(x,y-1);
         break;
 
         case 'd':
-            move(playerPos.first, playerPos.second+1, 'p');
-            move(playerPos.first, playerPos.second,'0');
+            move(x, y+1, 'p');
+            move(x, y,'0');
+            checkScene(x,y+1);
         break;
     }
 }

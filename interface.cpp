@@ -1,6 +1,5 @@
 #include "headers/interface.hpp"
 #include "headers/curses.h"
-#include "headers/cursor.hpp"
 
 void Interface::printMap(std::vector<char> map, int width) {
     for (int i = 0; i < map.size(); i++) {
@@ -56,7 +55,7 @@ void Interface::printObject(char distance) {
     
 }
 
-void Interface::printScene(Cursor& c, std::vector<char> map) {
+/*void Interface::printScene(std::vector<char> map) {
     char value = map[c.getPos()];
     
     switch (value) {
@@ -66,4 +65,4 @@ void Interface::printScene(Cursor& c, std::vector<char> map) {
         default:
         clear();
     }   
-}
+}*/

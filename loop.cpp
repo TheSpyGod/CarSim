@@ -1,7 +1,7 @@
 #include "headers/loop.hpp"
 #include "headers/curses.h"
 
-Loop::Loop() : m(15, 15), c(m.getSize()) {}
+Loop::Loop() : m(15, 15) {}
 
 void Loop::startLoop() {
     initscr();
@@ -12,7 +12,7 @@ void Loop::startLoop() {
     while (true) {
         f.printMap(m.getMap(), m.getWidth());  
         m.movePlayer(getch());
-        f.printScene(c, m.getMap());
+        f.printScene(m.getMap());
     }
 
     refresh();

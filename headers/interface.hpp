@@ -2,8 +2,6 @@
 
 #include <vector>
 
-class Cursor;
-
 class Interface {
 public:
  
@@ -11,6 +9,6 @@ public:
 
     void printObject(char distance);
 
-    void printScene(Cursor& c, std::vector<char> map);
+    void printScene(std::vector<char> map);
 };
 

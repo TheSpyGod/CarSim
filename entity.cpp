@@ -8,3 +8,5 @@ void Entity::set(int x, int y) {
 std::pair<int, int> Entity::get() {
     return pos;
 }
+
+Entity::~Entity() {} //Destructor
