@@ -1,7 +1,7 @@
 #pragma once
 
-#include "interface.hpp"
-#include "map.hpp"
+#include "../window/interface.hpp"
+#include "../grid/map.hpp"
 
 class Loop {
 private:

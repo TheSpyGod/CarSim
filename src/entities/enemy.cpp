@@ -1,4 +1,4 @@
-#include "headers/enemy.hpp"
+#include "enemy.hpp"
 
 void Enemy::restoreHealth(int heal) {
     health += heal;

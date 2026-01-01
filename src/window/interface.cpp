@@ -1,6 +1,6 @@
-#include "headers/interface.hpp"
-#include "headers/curses.h"
-
+#include "interface.hpp"
+#include "../../lib/curses.h"
+// TODO REDO INTERFACE FUNCTIONS TO SUIT NEW VECTOR GRID
 void Interface::printMap(std::vector<char> map, int width) {
     for (int i = 0; i < map.size(); i++) {
         int count = i / width;

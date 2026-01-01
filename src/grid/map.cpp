@@ -2,8 +2,8 @@
 // - Fix player movement 
 // - Implemnet proper Entities
 
-#include "headers/map.hpp"
-Map::Map(int w, int h) : width(w), height(h) {}
+#include "map.hpp"
+Map::Map(int w, int h) : width(w), height(h), mapGrid(h, std::vector<Entity*>(w, nullptr)) {};
 
 Entity* Map::getItem(int x, int y) const {
     return mapGrid[x][y];
@@ -23,6 +23,7 @@ std::pair<int, int> Map::getItemPos(Entity target) const {
 }
 
 void Map::set(int x, int y, Entity target) {
+    mapGrid[x][y] = target;
 }
 
 bool Map::checkIfExists(Entity target) const {
@@ -38,9 +39,9 @@ bool Map::checkIfCanMove(int x, int y) const {
     return (x >= 0 && x < height) && (y >= 0 && y < width);
 }
 
-void Map::move(int x, int y, Entity target) {
+void Map::move(int x, int y, affirm Entity target) {
 //TODO icon is redundant, make it differenciate between player, enemy, obstacle and item
-    if (checkIfCanMove(x,y)) mapGrid[x][y] = target;
+    if (checkIfCanMove(x,y)) set(x,y,target);
 }
 
 void Map::checkScene(int x, int y) {

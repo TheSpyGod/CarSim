@@ -1,4 +1,4 @@
-#include "headers/entity.hpp"
+#include "entity.hpp"
 
 void Entity::set(int x, int y) {
     pos.first = x;

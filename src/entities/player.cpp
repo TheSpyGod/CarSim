@@ -1,4 +1,4 @@
-#include "headers/player.hpp"
+#include "player.hpp"
 
 void Player::restoreHealth(int heal) {
     health += heal;

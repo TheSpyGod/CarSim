@@ -1,6 +1,6 @@
 #pragma once
 
-#include "entity.hpp"
+#include "../entities/entity.hpp"
 #include <vector>
 #include <utility>
 
@@ -9,7 +9,7 @@ class Cursor;
 class Map {
 private:
     const int width, height;
-    std::vector<std::vector<Entity*>> mapGrid(width * height, std::vector<Entity*>(width * height, nullptr));
+    std::vector<std::vector<Entity*>> mapGrid;
 
 public:
     Map(int w, int h);

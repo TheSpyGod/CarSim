@@ -1,5 +1,5 @@
-#include "headers/loop.hpp"
-#include "headers/curses.h"
+#include "loop.hpp"
+#include "../../lib/curses.h"
 
 Loop::Loop() : m(15, 15) {}
 
@@ -10,7 +10,6 @@ void Loop::startLoop() {
     curs_set(0);
     
     while (true) {
-        f.printMap(m.getMap(), m.getWidth());  
         m.movePlayer(getch());
         f.printScene(m.getMap());
     }
