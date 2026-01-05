@@ -1,8 +1,8 @@
-#include "headers/loop.hpp"
+#include "./src/window/window.h"
 
 int main() {
   
-    Loop l;
-    l.startLoop();
+    Window win;
+    win.init();
     return 0;
 }
