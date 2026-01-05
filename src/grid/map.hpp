@@ -4,33 +4,26 @@
 #include <vector>
 #include <utility>
 
-class Cursor;
-
 class Map {
 private:
     const int width, height;
-    std::vector<std::vector<Entity*>> mapGrid;
+    std::vector<std::vector<Entity>> map;
 
 public:
     Map(int w, int h);
     
-    char getItem(int x, int y) const;
+    Entity& get(int x, int y);
 
-    std::vector<std::vector<Entity*>> getMap() const;
+    std::vector<std::vector<Entity>> getMap() const;
 
-    std::pair<int, int> getItemPos(Entity target) const;
+    void set(int x, int y, Entity target);
+    
+    bool isInside(int x, int y) const;
 
-    int getSize() const;
+    Entity& findPlayer();
 
-    bool checkIfExists(Entity target) const;
+    void moveObject(int dx, int dy);
 
-    //TODO Fix logic for movement, when hitting a corner it doesnt stop
-    bool checkIfCanMove(int x, int y) const;
-
-    void move(int x, int y, Entity target);
-
-    bool checkScene(int x, int y) const;
-
-    void movePlayer(int direction);
+    void movePlayer(char direction);
 
 };

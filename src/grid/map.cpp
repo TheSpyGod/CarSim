@@ -1,83 +1,57 @@
 //TODO
 // - Fix player movement 
 // - Implemnet proper Entities
+#include "./map.hpp"
+#include "../entities/entity.hpp"
 
-#include "map.hpp"
-Map::Map(int w, int h) : width(w), height(h), mapGrid(h, std::vector<Entity*>(w, nullptr)) {};
+Map::Map(int w, int h) : width(w), height(h), map(h, std::vector<Entity>(w)) {};
 
-Entity* Map::getItem(int x, int y) const {
-    return mapGrid[x][y];
-}
+Entity& Map::get(int x, int y) { return map[x][y]; }
 
-std::vector<std::vector<Entity*>> Map::getMap() const {
-    return mapGrid;
-}
+void Map::set(int x, int y, Entity e) { map[x][y] = e; }
 
-std::pair<int, int> Map::getItemPos(Entity target) const {
-    for (int i = 0; i < height; ++i) {
-        for (int j = 0; j < width; j++) {
-            if (mapGrid[i][j] == target) return std::make_pair(x,y);
-        }
-    }
-    return {0,0};
-}
-
-void Map::set(int x, int y, Entity target) {
-    mapGrid[x][y] = target;
-}
-
-bool Map::checkIfExists(Entity target) const {
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) {
-            if (mapGrid[i][j] == target) return true;
-        }
-    }
-    return false;
-}
-
-bool Map::checkIfCanMove(int x, int y) const {
+bool Map::isInside(int x, int y) const {
     return (x >= 0 && x < height) && (y >= 0 && y < width);
 }
 
-void Map::move(int x, int y, affirm Entity target) {
-//TODO icon is redundant, make it differenciate between player, enemy, obstacle and item
-    if (checkIfCanMove(x,y)) set(x,y,target);
+Entity& Map::findPlayer() {
+    for (auto &row : map)
+        for (auto &cell : row)
+            if (cell.type == EntityType::Player) return cell;
 }
 
-void Map::checkScene(int x, int y) {
-    int c = tiles[x * y];
-    if (c == '0') return;
+void Map::moveObject(int dx, int dy) {
+    Entity &player = findPlayer();
+    int nx = player.x + dx;
+    int ny = player.y + dy;
 
-    if (c == '&') // Enemy
-    else if (c == '$') //Item
-}
-
-void Map::movePlayer(int direction) {
+    if (!isInside(nx, ny)) return;
     
-    //TODO Add in the Cursor implementation and movement   
+    Entity &targetCell = get(nx, ny);
+    if (targetCell.type == EntityType::Empty) {
+        std::swap(targetCell, player);
+        player.x = nx;
+        player.y = ny;
+    }
+}
+
+void Map::movePlayer(char direction) {
+  //TODO Add in the Cursor implementation and movement   
     switch (direction) {
         case 'w':
-            move(x-1, y, 'p');
-            move(x, y,'0');
-            checkScene(x-1,y);
+            moveObject(0, -1);
         break;
 
         case 's':
-            move(x+1, y, 'p');
-            move(x, y,'0');
-            checkScene(x+1,y);
+            moveObject(0, 1);
         break;
 
         case 'a':
-            move(x, y-1, 'p');
-            move(x, y,'0');
-            checkScene(x,y-1);
+            moveObject(-1, 0);
         break;
 
         case 'd':
-            move(x, y+1, 'p');
-            move(x, y,'0');
-            checkScene(x,y+1);
+            moveObject(1, 0);
         break;
     }
 }

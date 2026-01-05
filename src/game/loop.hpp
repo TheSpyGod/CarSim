@@ -1,12 +1,12 @@
 #pragma once
 
-#include "../window/interface.hpp"
+#include "../window/window.h"
 #include "../grid/map.hpp"
 
 class Loop {
 private:
     Map m;
-    Interface f;
+    Window win;
 
 public:
     Loop();

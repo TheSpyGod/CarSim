@@ -1,12 +1,10 @@
 #pragma once
 #include <utility>
+enum class EntityType {Player, Enemy, Item, Empty};
 
 class Entity {
-    std::pair<int, int> pos;
-    
 public:
-    void set(int x, int y);
-    std::pair<int, int> get();
-    virtual void onPlayerCollision();
+    EntityType type;
+    int x, y;
     virtual ~Entity();
 };
