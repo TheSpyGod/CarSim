@@ -1,8 +1,9 @@
-#include "./src/window/window.h"
-
+#include "./src/game/loop.hpp"
+#include <cstdlib>
+#include <ctime>
 int main() {
-  
-    Window win;
-    win.init();
+    srand(time(0));
+    Loop l;
+    l.startLoop();
     return 0;
 }
