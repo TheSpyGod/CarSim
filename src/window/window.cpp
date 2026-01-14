@@ -1,12 +1,16 @@
 #include "window.h"
-#include <raylib.h>
 void Window::init() {
     InitWindow(800,800,"TEST");
-    
-    while (!WindowShouldClose) {
+ 
+    Map m(20,20);
+    Draw d;
+    m.randomize();
+
+    while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        DrawText("Hello!",200,200,20,LIGHTGRAY);
+        d.drawMap(m.get());
+        m.movePlayer(GetKeyPressed());
         EndDrawing();
     }
 

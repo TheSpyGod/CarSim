@@ -6,5 +6,6 @@ class Entity {
 public:
     EntityType type;
     int x, y;
+    Entity() : type(EntityType::Empty) {};
     virtual ~Entity();
 };
