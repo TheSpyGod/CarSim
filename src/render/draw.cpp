@@ -13,3 +13,8 @@ void Draw::drawMap(const std::vector<std::vector<Entity>> &map) {
         y+=20;
     }
 }
+
+void Draw::drawScene(const std::vector<std::vector<Entity>> &map) {
+// Need a flag for hitting an enemy/item/wall
+// Maybe check 
+}

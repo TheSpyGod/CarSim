@@ -3,17 +3,16 @@
 #include "../entities/entity.hpp"
 #include <vector>
 #include <utility>
+#include <random>
 
 class Map {
 private:
     const int width, height;
-    std::vector<std::vector<Entity>> map;
+    std::vector<Entity> entities;
+    std::vector<Entity*> grid;
 
 public:
     Map(int w, int h);
- 
-    //Map();
-    //Map();
 
     Entity& get(int x, int y);
 
