@@ -9,5 +9,5 @@ private:
     int w = 15;
     int h = 15;
 public:
-    void drawMap(const std::vector<std::vector<Entity>> &map);
+    void drawMap(const std::vector<Entity*> &grid, int width);
 };

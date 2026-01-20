@@ -1,20 +1,23 @@
 #include "draw.hpp"
-void Draw::drawMap(const std::vector<std::vector<Entity>> &map) {
+void Draw::drawMap(const std::vector<Entity*> &grid, int width) {
     int y = 0;
-    for (const std::vector<Entity> &row : map) {
-        int x = 0;
-        for (const Entity &cell : row) {
-            if (cell.type == EntityType::Enemy) DrawRectangle(x,y,w,h,RED);
-            if (cell.type == EntityType::Empty) DrawRectangle(x,y,w,h,WHITE);
-            if (cell.type == EntityType::Item) DrawRectangle(x,y,w,h,YELLOW);
-            if (cell.type == EntityType::Player) DrawRectangle(x,y,w,h,BLUE);
-            x+=20;
+
+    for (int i = 0; i < grid.size(); ++i) {
+        int x = (i % width) * w;   
+        y = (i / width) * h;        
+
+        Entity* cell = grid[i];
+        if (!cell) {
+            DrawRectangle(x, y, w, h, WHITE);
+            continue;
         }
-        y+=20;
+
+        switch (cell->type) {
+            case EntityType::Enemy:  DrawRectangle(x, y, w, h, RED); break;
+            case EntityType::Empty:  DrawRectangle(x, y, w, h, WHITE); break;
+            case EntityType::Item:   DrawRectangle(x, y, w, h, YELLOW); break;
+            case EntityType::Player: DrawRectangle(x, y, w, h, BLUE); break;
+        }
     }
 }
 
-void Draw::drawScene(const std::vector<std::vector<Entity>> &map) {
-// Need a flag for hitting an enemy/item/wall
-// Maybe check 
-}
