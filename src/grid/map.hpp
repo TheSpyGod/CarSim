@@ -14,16 +14,16 @@ class Map {
 private:
     const int width, height;
     std::vector<Entity> entities;
-    std::vector<Entity*> grid;
+    std::vector<std::vector<Entity*>> grid;
 
     inline int idx(int x, int y) const { return x * width + y; }
 
 public:
     Map(int w, int h);
 
-    Entity* get(int x, int y);
+    Entity* get(int x, int y, int entityNumber);
 
-    const std::vector<Entity*>& getGrid() const;
+    const std::vector<std::vector<Entity*>>& getGrid() const;
 
     const int getWidth() const;
 

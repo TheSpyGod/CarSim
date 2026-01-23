@@ -3,7 +3,7 @@
 // - Implemnet proper Entities
 #include "./map.hpp"
 
-Map::Map(int w, int h) : width(w), height(h), grid(h * w, nullptr) {
+Map::Map(int w, int h) : width(w), height(h), grid(width * height) {
     srand(time(0));
 
     entities.resize(rand() % 10 + 1);
@@ -11,17 +11,19 @@ Map::Map(int w, int h) : width(w), height(h), grid(h * w, nullptr) {
 
 //Map::Map() {}
 //TODO 
-// Seperate entities into TWO distinct vectors:
-// Normal vector with ALL existing Entities
-// Second Vector with the grid and some spaces pointing to the existing objects
 //
-Entity* Map::get(int x, int y) { return grid[idx(x, y)]; }
+//Remake the map and how tiles work
+//So far tiles were single entity, but what if i want multiple entities on a single tile?
+//
+//
+//
+std::vector<Entity*> Map::get(int x, int y) { return grid[idx(x, y)]; }
 
-const std::vector<Entity*>& Map::getGrid() const { return grid; }
+const std::vector<std::vector<Entity*>>& Map::getGrid() const { return grid; }
 
 const int Map::getWidth() const { return width; }
 
-void Map::set(int x, int y, Entity* e) { grid[idx(x, y)] = e; }
+void Map::set(int x, int y, Entity* e) { grid[idx(x, y)].insert(grid[idx(x, y)].begin(), e) }
 
 void Map::randomize() {
     if (entities.empty()) return;
@@ -33,19 +35,25 @@ void Map::randomize() {
     }
 
     std::fill(grid.begin(), grid.end(), nullptr);
+
     for (size_t i = 0; i < entities.size(); ++i) {
-        grid[i] = &entities[i];
+        int r = rand() % grid.size() - 1;
+        grid[r].insert(grid[r].begin(), &entities[i]);
     }
 
     std::shuffle(grid.begin(), grid.end(), std::mt19937{ std::random_device{}() });
 
     for (int i = 0; i < height; ++i) {
         for (int j = 0; j < width; ++j) {
-            Entity* e = get(i, j);
-            if (e) {
-                e->x = i;
-                e->y = j;
+            std::vector<Entity*> e = get(i, j);
+            
+            for (int k = 0; k < e.size(); k++) {
+                if (e[k]) {
+                    e->x = i;
+                    e->y = j;
+                }
             }
+    
         }
     }
 }
@@ -55,12 +63,13 @@ bool Map::isInside(int x, int y) const {
 }
 
 Entity* Map::findPlayer() {
- for (Entity* e : grid) {
-        if (e && e->type == EntityType::Player) return e;
-    }
-    return nullptr;
+for (std::vector<Entity*> e : grid) {
+    for (int k = 0; k < e.size(); k++) if (e && e->type == EntityType::Player) return e;
+}
+return nullptr;
 }
 
+//This only swaps the container NOT the player within them :(
 void Map::moveObject(int dx, int dy) {
     Entity* player = findPlayer();
     if (!player) return;
@@ -79,6 +88,7 @@ void Map::moveObject(int dx, int dy) {
     }
     else if (target->type == EntityType::Enemy) {
         std::swap(grid[idx(player->x, player->y)], grid[idx(nx, ny)]);
+        grid[idx(nx, ny)] = player;
         player->x = nx;
         player->y = ny;
         // Instead of switching

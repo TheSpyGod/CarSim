@@ -1,5 +1,6 @@
 #include "draw.hpp"
-void Draw::drawMap(const std::vector<Entity*> &grid, int width) {
+#include "map.hpp"
+void Draw::drawMap(const std::vector<std::vector<Entity*>> &grid, int width) {
     int y = 0;
 
     for (int i = 0; i < grid.size(); ++i) {
@@ -21,3 +22,13 @@ void Draw::drawMap(const std::vector<Entity*> &grid, int width) {
     }
 }
 
+void DrawBackground(EntityType type) {
+    
+    switch (type) {
+        case EntityType::Enemy: background = LoadTexture("../img/enemy.png"); break;
+        case EntityType::Item: background = LoadTexture("../img/item.png"); break;
+        case EntityType::Empty: background = LoadTexture("../img/empty.png"); break;
+    }
+
+    //Go through entities and check if both have the same x and y values 
+}
