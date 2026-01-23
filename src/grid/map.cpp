@@ -23,7 +23,7 @@ const std::vector<std::vector<Entity*>>& Map::getGrid() const { return grid; }
 
 const int Map::getWidth() const { return width; }
 
-void Map::set(int x, int y, Entity* e) { grid[idx(x, y)].insert(grid[idx(x, y)].begin(), e) }
+void Map::set(int x, int y, Entity* e) { grid[idx(x, y)].insert(grid[idx(x, y)].begin(), e); }
 
 void Map::randomize() {
     if (entities.empty()) return;
@@ -45,7 +45,7 @@ void Map::randomize() {
 
     for (int i = 0; i < height; ++i) {
         for (int j = 0; j < width; ++j) {
-            std::vector<Entity*> e = get(i, j);
+            std::vector<Entity*>& e = grid[idx(i, j)];
             
             for (int k = 0; k < e.size(); k++) {
                 if (e[k]) {
@@ -69,45 +69,39 @@ for (std::vector<Entity*> e : grid) {
 return nullptr;
 }
 
-//This only swaps the container NOT the player within them :(
-void Map::moveObject(int dx, int dy) {
-    Entity* player = findPlayer();
-    if (!player) return;
 
-    int nx = player->x + dx;
-    int ny = player->y + dy;
+void Map::moveObject(int nx, int ny, Entity* obj) {
+    
+    int dx = obj->x + nx;
+    int dy = obj->y + ny;
 
-    if (!isInside(nx, ny)) return;
+    if (!isInside(dx, dy)) return;
 
-    Entity* target = get(nx, ny);
+    //Push back the object to the target vector
+    grid[idx(dx, dy)].push_back(obj);
 
-    if (!target || target->type == EntityType::Empty) {
-        std::swap(grid[idx(player->x, player->y)], grid[idx(nx, ny)]);
-        player->x = nx;
-        player->y = ny;
-    }
-    else if (target->type == EntityType::Enemy) {
-        std::swap(grid[idx(player->x, player->y)], grid[idx(nx, ny)]);
-        grid[idx(nx, ny)] = player;
-        player->x = nx;
-        player->y = ny;
-        // Instead of switching
-        // Trigger fight scene and override enemy when won
-    }
-    else if (target->type == EntityType::Item) {
-        std::swap(grid[idx(player->x, player->y)], grid[idx(nx, ny)]);
-        player->x = nx;
-        player->y = ny;
-        //Increase player damage
-    }
+    //Erase existing object in the previous vector
+    grid[idx(obj->x, obj->y)].erase(
+        std::remove_if(grid[idx(obj->x, obj->y)].begin(), grid[idx(obj->x, obj->y)].end(), 
+            [obj](Entity* e) {
+                return e == obj;
+        }),
+        grid[idx(obj->x, obj->y)].end()
+    );
+
+    obj->x = dx;
+    obj->y = dy;
 }
 
 void Map::movePlayer(int key) {
   //TODO Add in the Cursor implementation and movement   
+    Entity* player = findPlayer();
+    if (!player) return;
+
     switch (key) {
-        case KEY_LEFT: moveObject(0, -1); break;
-        case KEY_RIGHT: moveObject(0, 1); break;
-        case KEY_UP: moveObject(-1, 0); break;
-        case KEY_DOWN: moveObject(1, 0); break;
+        case KEY_LEFT: moveObject(0, -1, player); break;
+        case KEY_RIGHT: moveObject(0, 1, player); break;
+        case KEY_UP: moveObject(-1, 0, player); break;
+        case KEY_DOWN: moveObject(1, 0, player); break;
     }
 }

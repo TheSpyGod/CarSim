@@ -21,7 +21,7 @@ private:
 public:
     Map(int w, int h);
 
-    Entity* get(int x, int y, int entityNumber);
+    Entity* get(int x, int y);
 
     const std::vector<std::vector<Entity*>>& getGrid() const;
 
@@ -35,7 +35,7 @@ public:
 
     Entity* findPlayer();
 
-    void moveObject(int dx, int dy);
+    void moveObject(int dx, int dy, Entity* obj);
 
     void movePlayer(int key);
 
