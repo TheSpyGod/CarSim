@@ -1,6 +1,6 @@
 #pragma once
 #include <utility>
-enum class EntityType {Player, Enemy, Item, Empty};
+enum class EntityType {Player, Enemy, Item, Empty, COUNT};
 
 class Entity {
 public:

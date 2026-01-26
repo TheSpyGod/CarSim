@@ -35,6 +35,8 @@ public:
 
     Entity* findPlayer();
 
+    std::vector<Entity*> findPlayerLocation();
+    
     void moveObject(int dx, int dy, Entity* obj);
 
     void movePlayer(int key);

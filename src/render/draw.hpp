@@ -10,5 +10,5 @@ private:
     int h = 15;
 public:
     void drawMap(const std::vector<std::vector<Entity*>> &grid, int width);
-    void DrawBackground(EntityType type, Texture2D& background);
+    EntityType DrawBackground(std::vector<Entity*> container);
 };

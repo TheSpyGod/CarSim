@@ -1,23 +1,34 @@
 #include "window.h"
 
+void Window::loadTextures() {
+    textures[(int)EntityType::Enemy] = LoadTexture("../img/enemy.png");
+    textures[(int)EntityType::Item] = LoadTexture("../img/item.png");
+    textures[(int)EntityType::Empty] = LoadTexture("../img/empty.png");
+}
+
+void Window::unloadTextures() {
+    for (int i = 0; i < (int)EntityType::COUNT; i++)
+    UnloadTexture(textures[i]);
+}
+
 void Window::init() {
 
     InitWindow(800,800,"TEST");
- 
+     
+    loadTextures();
+
     Map m(20,20);
     Draw d;
     m.randomize();
-
-    d.DrawBackground(m.findPlayer()->type, background);
     
     while (!WindowShouldClose()) {
         BeginDrawing();
-        DrawTexture(background, 0, 0, WHITE);
+        DrawTexture(textures[(int)d.DrawBackground(m.findPlayerLocation())], 0, 0, WHITE);
         d.drawMap(m.getGrid(), m.getWidth());
         m.movePlayer(GetKeyPressed());
         EndDrawing();
     }
-    
-    UnloadTexture(background);
+
+    unloadTextures();
     CloseWindow();
 }

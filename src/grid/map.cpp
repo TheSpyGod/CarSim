@@ -66,6 +66,13 @@ Entity* Map::findPlayer() {
     return nullptr;
 }
 
+std::vector<Entity*> Map::findPlayerLocation() {
+    for (std::vector<Entity*> e : grid) {
+        for (int k = 0; k < e.size(); k++) if (e.size() > 0 && e[k]->type == EntityType::Player) return e;
+    }
+    return std::vector<Entity*> {};
+}
+
 void Map::moveObject(int nx, int ny, Entity* obj) {
     
     int dx = obj->x + nx;
