@@ -2,47 +2,54 @@
 // - Fix player movement 
 // - Implemnet proper Entities
 #include "./map.hpp"
-#include "../entities/entity.hpp"
-#include <cstdlib>
-#include <ctime>
-#include <raylib.h>
 
-Map::Map(int w, int h) : width(w), height(h), map(h, std::vector<Entity>(w)) {};
+Map::Map(int w, int h) : width(w), height(h), grid(width * height) {
+    srand(time(0));
+
+    entities.resize(rand() % 10 + 1);
+};
 
 //Map::Map() {}
+//TODO 
+//
+//Remake the map and how tiles work
+//So far tiles were single entity, but what if i want multiple entities on a single tile?
+//
+//
 
-Entity& Map::get(int x, int y) { return map[x][y]; }
+std::vector<Entity*> Map::get(int x, int y) { return grid[idx(x, y)]; }
 
-std::vector<std::vector<Entity>> Map::get() { return map; }
+const std::vector<std::vector<Entity*>>& Map::getGrid() const { return grid; }
 
-void Map::set(int x, int y, Entity e) { map[x][y] = e; }
+const int Map::getWidth() const { return width; }
+
+void Map::set(int x, int y, Entity* e) { grid[idx(x, y)].insert(grid[idx(x, y)].begin(), e); }
 
 void Map::randomize() {
-    
-    map[width/2][height/2].type = EntityType::Player;
-    map[width/2][height/2].x = width / 2;
-    map[width/2][height/2].y = height / 2;
+    if (entities.empty()) return;
 
-    for (int i = 0; i < width; i++) {
-        int n = 0;
-        for (int j = 0; j < height; j++) {
-            Entity &cell = map[i][j];
-            if (cell.type == EntityType::Player) continue;
-            n = rand() % 101;
-            if (n <= 95) {
-                cell.type = EntityType::Empty;
-                cell.x = i;
-                cell.y = j;
-            }
-            else if (n > 95 && n < 98) {
-                cell.type = EntityType::Enemy;
-                cell.x = i;
-                cell.y = j;
-            }
-            else {
-                cell.type = EntityType::Item;
-                cell.x = i;
-                cell.y = j;
+    entities[0].type = EntityType::Player;
+
+    for (size_t i = 1; i < entities.size(); ++i) {
+        entities[i].type = (rand() % 2 == 0) ? EntityType::Enemy : EntityType::Item;
+    }
+  
+    for (auto& row : grid) std::fill(row.begin(), row.end(), nullptr);
+
+    for (size_t i = 0; i < entities.size(); ++i) {
+        int r = rand() % grid.size() - 1;
+        grid[r].insert(grid[r].begin(), &entities[i]);
+    }
+
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            std::vector<Entity*>& e = grid[idx(i, j)];
+            
+            for (int k = 0; k < e.size(); k++) {
+                if (e[k]) {
+                    e[k]->x = i;
+                    e[k]->y = j;
+                }
             }
         }
     }
@@ -52,44 +59,45 @@ bool Map::isInside(int x, int y) const {
     return (x >= 0 && x < height) && (y >= 0 && y < width);
 }
 
-Entity& Map::findPlayer() {
-    for (auto &row : map)
-        for (auto &cell : row)
-            if (cell.type == EntityType::Player) return cell;
+Entity* Map::findPlayer() {
+    for (std::vector<Entity*> e : grid) {
+        for (int k = 0; k < e.size(); k++) if (e.size() > 0 && e[k]->type == EntityType::Player) return e[k];
+    }
+    return nullptr;
 }
 
-void Map::moveObject(int dx, int dy) {
-    Entity &player = findPlayer();
-    int nx = player.x + dx;
-    int ny = player.y + dy;
-
-    if (!isInside(nx, ny)) return;
+void Map::moveObject(int nx, int ny, Entity* obj) {
     
-    Entity &targetCell = get(nx, ny);
-    if (targetCell.type == EntityType::Empty) {
-        std::swap(targetCell.type, player.type);
-        //targetCell.x = nx;
-        //targetCell.y = ny;
-    }
+    int dx = obj->x + nx;
+    int dy = obj->y + ny;
+
+    if (!isInside(dx, dy)) return;
+
+    //Push back the object to the target vector
+    grid[idx(dx, dy)].push_back(obj);
+
+    //Erase existing object in the previous vector
+    grid[idx(obj->x, obj->y)].erase(
+        std::remove_if(grid[idx(obj->x, obj->y)].begin(), grid[idx(obj->x, obj->y)].end(), 
+            [obj](Entity* e) {
+                return e == obj;
+        }),
+        grid[idx(obj->x, obj->y)].end()
+    );
+
+    obj->x = dx;
+    obj->y = dy;
 }
 
 void Map::movePlayer(int key) {
   //TODO Add in the Cursor implementation and movement   
+    Entity* player = findPlayer();
+    if (!player) return;
+
     switch (key) {
-        case KEY_LEFT:
-            moveObject(0, -1);
-        break;
-
-        case KEY_RIGHT:
-            moveObject(0, 1);
-        break;
-
-        case KEY_UP:
-            moveObject(-1, 0);
-        break;
-
-        case KEY_DOWN:
-            moveObject(1, 0);
-        break;
+        case KEY_LEFT: moveObject(0, -1, player); break;
+        case KEY_RIGHT: moveObject(0, 1, player); break;
+        case KEY_UP: moveObject(-1, 0, player); break;
+        case KEY_DOWN: moveObject(1, 0, player); break;
     }
 }
