@@ -21,7 +21,7 @@ private:
 public:
     Map(int w, int h);
 
-    Entity* get(int x, int y);
+    std::vector<Entity*> get(int x, int y);
 
     const std::vector<std::vector<Entity*>>& getGrid() const;
 

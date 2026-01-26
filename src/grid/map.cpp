@@ -16,7 +16,7 @@ Map::Map(int w, int h) : width(w), height(h), grid(width * height) {
 //So far tiles were single entity, but what if i want multiple entities on a single tile?
 //
 //
-//
+
 std::vector<Entity*> Map::get(int x, int y) { return grid[idx(x, y)]; }
 
 const std::vector<std::vector<Entity*>>& Map::getGrid() const { return grid; }
@@ -33,15 +33,13 @@ void Map::randomize() {
     for (size_t i = 1; i < entities.size(); ++i) {
         entities[i].type = (rand() % 2 == 0) ? EntityType::Enemy : EntityType::Item;
     }
-
-    std::fill(grid.begin(), grid.end(), nullptr);
+  
+    for (auto& row : grid) std::fill(row.begin(), row.end(), nullptr);
 
     for (size_t i = 0; i < entities.size(); ++i) {
         int r = rand() % grid.size() - 1;
         grid[r].insert(grid[r].begin(), &entities[i]);
     }
-
-    std::shuffle(grid.begin(), grid.end(), std::mt19937{ std::random_device{}() });
 
     for (int i = 0; i < height; ++i) {
         for (int j = 0; j < width; ++j) {
@@ -49,11 +47,10 @@ void Map::randomize() {
             
             for (int k = 0; k < e.size(); k++) {
                 if (e[k]) {
-                    e->x = i;
-                    e->y = j;
+                    e[k]->x = i;
+                    e[k]->y = j;
                 }
             }
-    
         }
     }
 }
@@ -63,12 +60,11 @@ bool Map::isInside(int x, int y) const {
 }
 
 Entity* Map::findPlayer() {
-for (std::vector<Entity*> e : grid) {
-    for (int k = 0; k < e.size(); k++) if (e && e->type == EntityType::Player) return e;
+    for (std::vector<Entity*> e : grid) {
+        for (int k = 0; k < e.size(); k++) if (e.size() > 0 && e[k]->type == EntityType::Player) return e[k];
+    }
+    return nullptr;
 }
-return nullptr;
-}
-
 
 void Map::moveObject(int nx, int ny, Entity* obj) {
     

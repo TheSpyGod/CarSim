@@ -5,5 +5,6 @@
 
 class Window {
 public:
+    Texture2D background;
     void init();
 };

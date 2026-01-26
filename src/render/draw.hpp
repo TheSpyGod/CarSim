@@ -9,5 +9,6 @@ private:
     int w = 15;
     int h = 15;
 public:
-    void drawMap(const std::vector<Entity*> &grid, int width);
+    void drawMap(const std::vector<std::vector<Entity*>> &grid, int width);
+    void DrawBackground(EntityType type, Texture2D& background);
 };
