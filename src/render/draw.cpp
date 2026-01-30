@@ -14,6 +14,9 @@ void Draw::drawMap(const std::vector<std::vector<Entity*>> &grid, int width) {
             continue;
         }
 
+        w = 10;
+        h = 10;
+
         switch (cell->type) {
             case EntityType::Enemy:  DrawRectangle(x, y, w, h, RED); break;
             case EntityType::Empty:  DrawRectangle(x, y, w, h, WHITE); break;
