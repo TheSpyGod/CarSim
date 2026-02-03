@@ -5,3 +5,5 @@
 start
 backup
 backup/*
+*.zip
+/Gabriel_Korczyk_Projekt

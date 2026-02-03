@@ -3,7 +3,8 @@
 // - Implemnet proper Entities
 #include "./map.hpp"
 
-Map::Map(int w, int h) : width(w), height(h), grid(width * height) {
+
+Map::Map(int w, int h, Fight& fightRef) : width(w), height(h), grid(width * height), fight(fightRef) {
     srand(time(0));
 
     entities.resize(rand() % 10 + 1);
@@ -29,7 +30,6 @@ void Map::randomize() {
     if (entities.empty()) return;
 
     entities[0].type = EntityType::Player;
-
     for (size_t i = 1; i < entities.size(); ++i) {
         entities[i].type = (rand() % 2 == 0) ? EntityType::Enemy : EntityType::Item;
     }
@@ -66,6 +66,30 @@ Entity* Map::findPlayer() {
     return nullptr;
 }
 
+std::vector<Entity*> Map::findPlayerLocation() {
+    for (std::vector<Entity*> e : grid) {
+        for (int k = 0; k < e.size(); k++) if (e.size() > 0 && e[k]->type == EntityType::Player) return e;
+    }
+    return std::vector<Entity*> {};
+}
+
+void Map::checkCollision() {
+    if (!fight.fightState.fightOver) return;
+
+    Entity* targetEntity = nullptr;
+    for (size_t i = 1; i < entities.size(); i++) {
+        if (entities[0].x == entities[i].x && entities[0].y == entities[i].y) {
+            targetEntity = &entities[i];
+            break;
+        }
+    }
+
+    if (targetEntity && targetEntity->type == EntityType::Enemy) {
+        fight.startFight(entities[0], *targetEntity);
+        printf("Player colided at %d,%d\n", entities[0].x, entities[0].y);
+    }
+}
+
 void Map::moveObject(int nx, int ny, Entity* obj) {
     
     int dx = obj->x + nx;
@@ -100,4 +124,5 @@ void Map::movePlayer(int key) {
         case KEY_UP: moveObject(-1, 0, player); break;
         case KEY_DOWN: moveObject(1, 0, player); break;
     }
+
 }

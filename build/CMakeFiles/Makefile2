@@ -85,12 +85,12 @@ clean: CMakeFiles/CarSim.dir/clean
 CMakeFiles/CarSim.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarSim.dir/build.make CMakeFiles/CarSim.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarSim.dir/build.make CMakeFiles/CarSim.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target CarSim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target CarSim"
 .PHONY : CMakeFiles/CarSim.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/CarSim.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/CarSim.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles 0
 .PHONY : CMakeFiles/CarSim.dir/rule
@@ -102,7 +102,7 @@ CarSim: CMakeFiles/CarSim.dir/rule
 # codegen rule for target.
 CMakeFiles/CarSim.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarSim.dir/build.make CMakeFiles/CarSim.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Finished codegen for target CarSim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Finished codegen for target CarSim"
 .PHONY : CMakeFiles/CarSim.dir/codegen
 
 # clean rule for target.

@@ -4,6 +4,8 @@ CarSim: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/crtbeginS.o \
   CMakeFiles/CarSim.dir/main.cpp.o \
   CMakeFiles/CarSim.dir/src/entities/entity.cpp.o \
+  CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o \
+  CMakeFiles/CarSim.dir/src/fight/fight.cpp.o \
   CMakeFiles/CarSim.dir/src/game/loop.cpp.o \
   CMakeFiles/CarSim.dir/src/grid/map.cpp.o \
   CMakeFiles/CarSim.dir/src/render/draw.cpp.o \
@@ -47,6 +49,10 @@ CarSim: \
 CMakeFiles/CarSim.dir/main.cpp.o:
 
 CMakeFiles/CarSim.dir/src/entities/entity.cpp.o:
+
+CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o:
+
+CMakeFiles/CarSim.dir/src/fight/fight.cpp.o:
 
 CMakeFiles/CarSim.dir/src/game/loop.cpp.o:
 

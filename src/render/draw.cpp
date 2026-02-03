@@ -14,6 +14,9 @@ void Draw::drawMap(const std::vector<std::vector<Entity*>> &grid, int width) {
             continue;
         }
 
+        w = 10;
+        h = 10;
+
         switch (cell->type) {
             case EntityType::Enemy:  DrawRectangle(x, y, w, h, RED); break;
             case EntityType::Empty:  DrawRectangle(x, y, w, h, WHITE); break;
@@ -24,13 +27,15 @@ void Draw::drawMap(const std::vector<std::vector<Entity*>> &grid, int width) {
     }
 }
 
-void Draw::DrawBackground(EntityType type, Texture2D& background) {
-    
-    switch (type) {
-        case EntityType::Enemy: background = LoadTexture("../img/enemy.png"); break;
-        case EntityType::Item: background = LoadTexture("../img/item.png"); break;
-        case EntityType::Empty: background = LoadTexture("../img/empty.png"); break;
-    }
+EntityType Draw::DrawBackground(std::vector<Entity*> container) {
 
-    //Go through entities and check if both have the same x and y values 
+    EntityType type = EntityType::Empty;
+
+    for (auto entity : container) {
+        if (entity != nullptr && entity->type != EntityType::Player) { 
+            type = entity->type;
+            break;
+        }
+    }    
+  return type;
 }
