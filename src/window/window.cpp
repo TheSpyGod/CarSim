@@ -17,15 +17,18 @@ void Window::init() {
      
     loadTextures();
 
-    Map m(20,20);
+    Map m(20,20,fight);
     Draw d;
     m.randomize();
-    
+
     while (!WindowShouldClose()) {
         BeginDrawing();
         DrawTexture(textures[(int)d.DrawBackground(m.findPlayerLocation())], 0, 0, WHITE);
         d.drawMap(m.getGrid(), m.getWidth());
         m.movePlayer(GetKeyPressed());
+        m.checkCollision();
+        float dt = GetFrameTime();
+        fight.updateFight(dt);
         EndDrawing();
     }
 

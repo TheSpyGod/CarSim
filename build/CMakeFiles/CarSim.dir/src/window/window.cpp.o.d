@@ -151,4 +151,6 @@ CMakeFiles/CarSim.dir/src/window/window.cpp.o: \
  /usr/include/c++/15.2.1/ctime /usr/include/time.h \
  /usr/include/bits/time.h /usr/include/bits/timex.h \
  /usr/include/bits/types/struct_tm.h \
- /usr/include/bits/types/struct_itimerspec.h /usr/include/raylib.h
+ /usr/include/bits/types/struct_itimerspec.h /usr/include/raylib.h \
+ /home/gabriel/Dokumenty/__projects__/carsim/src/window/../render/../grid/../fight/fight.h \
+ /home/gabriel/Dokumenty/__projects__/carsim/src/window/../render/../grid/../fight/draw_fight.h

@@ -5,12 +5,9 @@
 
 class Loop {
 private:
-    Map m;
     Window win;
 
 public:
-    Loop();
-
     void init();
 
     void startLoop();

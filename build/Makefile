@@ -177,6 +177,54 @@ src/entities/entity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarSim.dir/build.make CMakeFiles/CarSim.dir/src/entities/entity.cpp.s
 .PHONY : src/entities/entity.cpp.s
 
+src/fight/draw_fight.o: src/fight/draw_fight.cpp.o
+.PHONY : src/fight/draw_fight.o
+
+# target to build an object file
+src/fight/draw_fight.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarSim.dir/build.make CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o
+.PHONY : src/fight/draw_fight.cpp.o
+
+src/fight/draw_fight.i: src/fight/draw_fight.cpp.i
+.PHONY : src/fight/draw_fight.i
+
+# target to preprocess a source file
+src/fight/draw_fight.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarSim.dir/build.make CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.i
+.PHONY : src/fight/draw_fight.cpp.i
+
+src/fight/draw_fight.s: src/fight/draw_fight.cpp.s
+.PHONY : src/fight/draw_fight.s
+
+# target to generate assembly for a file
+src/fight/draw_fight.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarSim.dir/build.make CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.s
+.PHONY : src/fight/draw_fight.cpp.s
+
+src/fight/fight.o: src/fight/fight.cpp.o
+.PHONY : src/fight/fight.o
+
+# target to build an object file
+src/fight/fight.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarSim.dir/build.make CMakeFiles/CarSim.dir/src/fight/fight.cpp.o
+.PHONY : src/fight/fight.cpp.o
+
+src/fight/fight.i: src/fight/fight.cpp.i
+.PHONY : src/fight/fight.i
+
+# target to preprocess a source file
+src/fight/fight.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarSim.dir/build.make CMakeFiles/CarSim.dir/src/fight/fight.cpp.i
+.PHONY : src/fight/fight.cpp.i
+
+src/fight/fight.s: src/fight/fight.cpp.s
+.PHONY : src/fight/fight.s
+
+# target to generate assembly for a file
+src/fight/fight.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarSim.dir/build.make CMakeFiles/CarSim.dir/src/fight/fight.cpp.s
+.PHONY : src/fight/fight.cpp.s
+
 src/game/loop.o: src/game/loop.cpp.o
 .PHONY : src/game/loop.o
 
@@ -288,6 +336,12 @@ help:
 	@echo "... src/entities/entity.o"
 	@echo "... src/entities/entity.i"
 	@echo "... src/entities/entity.s"
+	@echo "... src/fight/draw_fight.o"
+	@echo "... src/fight/draw_fight.i"
+	@echo "... src/fight/draw_fight.s"
+	@echo "... src/fight/fight.o"
+	@echo "... src/fight/fight.i"
+	@echo "... src/fight/fight.s"
 	@echo "... src/game/loop.o"
 	@echo "... src/game/loop.i"
 	@echo "... src/game/loop.s"

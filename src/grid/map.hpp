@@ -9,6 +9,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <raylib.h>
+#include "../fight/fight.h"
 
 class Map {
 private:
@@ -16,10 +17,13 @@ private:
     std::vector<Entity> entities;
     std::vector<std::vector<Entity*>> grid;
 
+    Fight& fight;
+
     inline int idx(int x, int y) const { return x * width + y; }
 
 public:
-    Map(int w, int h);
+    
+    Map(int w, int h, Fight& fightRef);
 
     std::vector<Entity*> get(int x, int y);
 
@@ -37,6 +41,8 @@ public:
 
     std::vector<Entity*> findPlayerLocation();
     
+    void checkCollision();
+
     void moveObject(int dx, int dy, Entity* obj);
 
     void movePlayer(int key);

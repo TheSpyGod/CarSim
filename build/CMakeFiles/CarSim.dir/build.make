@@ -100,10 +100,38 @@ CMakeFiles/CarSim.dir/src/entities/entity.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CarSim.dir/src/entities/entity.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gabriel/Dokumenty/__projects__/carsim/src/entities/entity.cpp -o CMakeFiles/CarSim.dir/src/entities/entity.cpp.s
 
+CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o: CMakeFiles/CarSim.dir/flags.make
+CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o: /home/gabriel/Dokumenty/__projects__/carsim/src/fight/draw_fight.cpp
+CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o: CMakeFiles/CarSim.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o -MF CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o.d -o CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o -c /home/gabriel/Dokumenty/__projects__/carsim/src/fight/draw_fight.cpp
+
+CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gabriel/Dokumenty/__projects__/carsim/src/fight/draw_fight.cpp > CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.i
+
+CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gabriel/Dokumenty/__projects__/carsim/src/fight/draw_fight.cpp -o CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.s
+
+CMakeFiles/CarSim.dir/src/fight/fight.cpp.o: CMakeFiles/CarSim.dir/flags.make
+CMakeFiles/CarSim.dir/src/fight/fight.cpp.o: /home/gabriel/Dokumenty/__projects__/carsim/src/fight/fight.cpp
+CMakeFiles/CarSim.dir/src/fight/fight.cpp.o: CMakeFiles/CarSim.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CarSim.dir/src/fight/fight.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CarSim.dir/src/fight/fight.cpp.o -MF CMakeFiles/CarSim.dir/src/fight/fight.cpp.o.d -o CMakeFiles/CarSim.dir/src/fight/fight.cpp.o -c /home/gabriel/Dokumenty/__projects__/carsim/src/fight/fight.cpp
+
+CMakeFiles/CarSim.dir/src/fight/fight.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CarSim.dir/src/fight/fight.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gabriel/Dokumenty/__projects__/carsim/src/fight/fight.cpp > CMakeFiles/CarSim.dir/src/fight/fight.cpp.i
+
+CMakeFiles/CarSim.dir/src/fight/fight.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CarSim.dir/src/fight/fight.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gabriel/Dokumenty/__projects__/carsim/src/fight/fight.cpp -o CMakeFiles/CarSim.dir/src/fight/fight.cpp.s
+
 CMakeFiles/CarSim.dir/src/game/loop.cpp.o: CMakeFiles/CarSim.dir/flags.make
 CMakeFiles/CarSim.dir/src/game/loop.cpp.o: /home/gabriel/Dokumenty/__projects__/carsim/src/game/loop.cpp
 CMakeFiles/CarSim.dir/src/game/loop.cpp.o: CMakeFiles/CarSim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CarSim.dir/src/game/loop.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/CarSim.dir/src/game/loop.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CarSim.dir/src/game/loop.cpp.o -MF CMakeFiles/CarSim.dir/src/game/loop.cpp.o.d -o CMakeFiles/CarSim.dir/src/game/loop.cpp.o -c /home/gabriel/Dokumenty/__projects__/carsim/src/game/loop.cpp
 
 CMakeFiles/CarSim.dir/src/game/loop.cpp.i: cmake_force
@@ -117,7 +145,7 @@ CMakeFiles/CarSim.dir/src/game/loop.cpp.s: cmake_force
 CMakeFiles/CarSim.dir/src/grid/map.cpp.o: CMakeFiles/CarSim.dir/flags.make
 CMakeFiles/CarSim.dir/src/grid/map.cpp.o: /home/gabriel/Dokumenty/__projects__/carsim/src/grid/map.cpp
 CMakeFiles/CarSim.dir/src/grid/map.cpp.o: CMakeFiles/CarSim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CarSim.dir/src/grid/map.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/CarSim.dir/src/grid/map.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CarSim.dir/src/grid/map.cpp.o -MF CMakeFiles/CarSim.dir/src/grid/map.cpp.o.d -o CMakeFiles/CarSim.dir/src/grid/map.cpp.o -c /home/gabriel/Dokumenty/__projects__/carsim/src/grid/map.cpp
 
 CMakeFiles/CarSim.dir/src/grid/map.cpp.i: cmake_force
@@ -131,7 +159,7 @@ CMakeFiles/CarSim.dir/src/grid/map.cpp.s: cmake_force
 CMakeFiles/CarSim.dir/src/render/draw.cpp.o: CMakeFiles/CarSim.dir/flags.make
 CMakeFiles/CarSim.dir/src/render/draw.cpp.o: /home/gabriel/Dokumenty/__projects__/carsim/src/render/draw.cpp
 CMakeFiles/CarSim.dir/src/render/draw.cpp.o: CMakeFiles/CarSim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/CarSim.dir/src/render/draw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/CarSim.dir/src/render/draw.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CarSim.dir/src/render/draw.cpp.o -MF CMakeFiles/CarSim.dir/src/render/draw.cpp.o.d -o CMakeFiles/CarSim.dir/src/render/draw.cpp.o -c /home/gabriel/Dokumenty/__projects__/carsim/src/render/draw.cpp
 
 CMakeFiles/CarSim.dir/src/render/draw.cpp.i: cmake_force
@@ -145,7 +173,7 @@ CMakeFiles/CarSim.dir/src/render/draw.cpp.s: cmake_force
 CMakeFiles/CarSim.dir/src/window/window.cpp.o: CMakeFiles/CarSim.dir/flags.make
 CMakeFiles/CarSim.dir/src/window/window.cpp.o: /home/gabriel/Dokumenty/__projects__/carsim/src/window/window.cpp
 CMakeFiles/CarSim.dir/src/window/window.cpp.o: CMakeFiles/CarSim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/CarSim.dir/src/window/window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/CarSim.dir/src/window/window.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CarSim.dir/src/window/window.cpp.o -MF CMakeFiles/CarSim.dir/src/window/window.cpp.o.d -o CMakeFiles/CarSim.dir/src/window/window.cpp.o -c /home/gabriel/Dokumenty/__projects__/carsim/src/window/window.cpp
 
 CMakeFiles/CarSim.dir/src/window/window.cpp.i: cmake_force
@@ -160,6 +188,8 @@ CMakeFiles/CarSim.dir/src/window/window.cpp.s: cmake_force
 CarSim_OBJECTS = \
 "CMakeFiles/CarSim.dir/main.cpp.o" \
 "CMakeFiles/CarSim.dir/src/entities/entity.cpp.o" \
+"CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o" \
+"CMakeFiles/CarSim.dir/src/fight/fight.cpp.o" \
 "CMakeFiles/CarSim.dir/src/game/loop.cpp.o" \
 "CMakeFiles/CarSim.dir/src/grid/map.cpp.o" \
 "CMakeFiles/CarSim.dir/src/render/draw.cpp.o" \
@@ -170,6 +200,8 @@ CarSim_EXTERNAL_OBJECTS =
 
 CarSim: CMakeFiles/CarSim.dir/main.cpp.o
 CarSim: CMakeFiles/CarSim.dir/src/entities/entity.cpp.o
+CarSim: CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o
+CarSim: CMakeFiles/CarSim.dir/src/fight/fight.cpp.o
 CarSim: CMakeFiles/CarSim.dir/src/game/loop.cpp.o
 CarSim: CMakeFiles/CarSim.dir/src/grid/map.cpp.o
 CarSim: CMakeFiles/CarSim.dir/src/render/draw.cpp.o
@@ -178,7 +210,7 @@ CarSim: CMakeFiles/CarSim.dir/build.make
 CarSim: CMakeFiles/CarSim.dir/compiler_depend.ts
 CarSim: /usr/lib/libraylib.so
 CarSim: CMakeFiles/CarSim.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable CarSim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/gabriel/Dokumenty/__projects__/carsim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable CarSim"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CarSim.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
