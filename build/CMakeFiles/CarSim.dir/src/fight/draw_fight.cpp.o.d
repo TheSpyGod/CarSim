@@ -1,7 +1,7 @@
 CMakeFiles/CarSim.dir/src/fight/draw_fight.cpp.o: \
- /home/gabriel/Dokumenty/__projects__/carsim/src/fight/draw_fight.cpp \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/fight/draw_fight.cpp \
  /usr/include/stdc-predef.h \
- /home/gabriel/Dokumenty/__projects__/carsim/src/fight/draw_fight.h \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/fight/draw_fight.h \
  /usr/include/raylib.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
  /usr/include/c++/15.2.1/string \

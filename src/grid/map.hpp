@@ -39,8 +39,12 @@ public:
 
     Entity* findPlayer();
 
+    bool isPlayerAlive();
+
     std::vector<Entity*> findPlayerLocation();
-    
+ 
+    void removeEntity(Entity* e);
+
     void checkCollision();
 
     void moveObject(int dx, int dy, Entity* obj);

@@ -30,6 +30,7 @@ void Map::randomize() {
     if (entities.empty()) return;
 
     entities[0].type = EntityType::Player;
+    entities[0].dmg = 35;
     for (size_t i = 1; i < entities.size(); ++i) {
         entities[i].type = (rand() % 2 == 0) ? EntityType::Enemy : EntityType::Item;
     }
@@ -66,11 +67,29 @@ Entity* Map::findPlayer() {
     return nullptr;
 }
 
+bool Map::isPlayerAlive() {
+    Entity* player = findPlayer();
+    if (player->health <= 0) return false;
+    else return true;
+}
+
 std::vector<Entity*> Map::findPlayerLocation() {
     for (std::vector<Entity*> e : grid) {
         for (int k = 0; k < e.size(); k++) if (e.size() > 0 && e[k]->type == EntityType::Player) return e;
     }
     return std::vector<Entity*> {};
+}
+
+void Map::removeEntity(Entity* e) {
+    if (!e) return;
+
+    int i = idx(e->x, e->y);
+    auto& cell = grid[i];
+
+    cell.erase(
+        std::remove(cell.begin(), cell.end(), e),
+        cell.end()
+    );
 }
 
 void Map::checkCollision() {
@@ -85,7 +104,11 @@ void Map::checkCollision() {
     }
 
     if (targetEntity && targetEntity->type == EntityType::Enemy) {
+        if (targetEntity->health > 0)
         fight.startFight(entities[0], *targetEntity);
+ 
+        if (targetEntity->health <= 0) removeEntity(targetEntity);
+
         printf("Player colided at %d,%d\n", entities[0].x, entities[0].y);
     }
 }

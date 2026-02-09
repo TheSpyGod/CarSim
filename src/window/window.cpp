@@ -23,6 +23,7 @@ void Window::init() {
 
     while (!WindowShouldClose()) {
         BeginDrawing();
+        if (!m.isPlayerAlive()) return;
         DrawTexture(textures[(int)d.DrawBackground(m.findPlayerLocation())], 0, 0, WHITE);
         d.drawMap(m.getGrid(), m.getWidth());
         m.movePlayer(GetKeyPressed());

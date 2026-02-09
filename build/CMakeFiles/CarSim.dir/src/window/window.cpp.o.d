@@ -1,10 +1,10 @@
 CMakeFiles/CarSim.dir/src/window/window.cpp.o: \
- /home/gabriel/Dokumenty/__projects__/carsim/src/window/window.cpp \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/window/window.cpp \
  /usr/include/stdc-predef.h \
- /home/gabriel/Dokumenty/__projects__/carsim/src/window/window.h \
- /home/gabriel/Dokumenty/__projects__/carsim/src/window/../render/draw.hpp \
- /home/gabriel/Dokumenty/__projects__/carsim/src/window/../render/../grid/map.hpp \
- /home/gabriel/Dokumenty/__projects__/carsim/src/window/../render/../grid/../entities/entity.hpp \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/window/window.h \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/window/../render/draw.hpp \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/window/../render/../grid/map.hpp \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/window/../render/../grid/../entities/entity.hpp \
  /usr/include/c++/15.2.1/utility \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -152,5 +152,5 @@ CMakeFiles/CarSim.dir/src/window/window.cpp.o: \
  /usr/include/bits/time.h /usr/include/bits/timex.h \
  /usr/include/bits/types/struct_tm.h \
  /usr/include/bits/types/struct_itimerspec.h /usr/include/raylib.h \
- /home/gabriel/Dokumenty/__projects__/carsim/src/window/../render/../grid/../fight/fight.h \
- /home/gabriel/Dokumenty/__projects__/carsim/src/window/../render/../grid/../fight/draw_fight.h
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/window/../render/../grid/../fight/fight.h \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/window/../render/../grid/../fight/draw_fight.h

@@ -3,9 +3,8 @@
 #include "draw_fight.h"
 
 struct FightState {
-    Entity* player = nullptr;
-    Entity* enemy = nullptr;
-    bool playerTurn = true;
+    Entity* attacker = nullptr;
+    Entity* defender = nullptr;
     float timer = 0.0f;
     float attackDelay = 0.5f;
     bool fightOver = true;
@@ -18,7 +17,7 @@ class Fight {
 public:
     FightState fightState;
 
-    bool isPlayerTurn(Entity* player, Entity* enemy);
+    const bool isPlayerTurn(Entity& player, Entity& enemy);
     void startFight(Entity& player, Entity& enemy);
     void updateFight(float dt);
 };

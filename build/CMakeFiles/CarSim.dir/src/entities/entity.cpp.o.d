@@ -1,7 +1,7 @@
 CMakeFiles/CarSim.dir/src/entities/entity.cpp.o: \
- /home/gabriel/Dokumenty/__projects__/carsim/src/entities/entity.cpp \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/entities/entity.cpp \
  /usr/include/stdc-predef.h \
- /home/gabriel/Dokumenty/__projects__/carsim/src/entities/entity.hpp \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/entities/entity.hpp \
  /usr/include/c++/15.2.1/utility \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \

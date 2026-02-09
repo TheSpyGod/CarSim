@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/gabriel/Dokumenty/__projects__/carsim/src
+CXX_INCLUDES = -I/home/gabriel/Dokumenty/__projects__/fun/carsim/src
 
 CXX_FLAGS = -std=gnu++17 -I/usr/include
 

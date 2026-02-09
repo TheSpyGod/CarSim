@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/gabriel/Dokumenty/__projects__/carsim/build/cmake_install.cmake"
+		"/home/gabriel/Dokumenty/__projects__/fun/carsim/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

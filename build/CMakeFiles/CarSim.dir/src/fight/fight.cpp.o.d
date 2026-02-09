@@ -1,8 +1,8 @@
 CMakeFiles/CarSim.dir/src/fight/fight.cpp.o: \
- /home/gabriel/Dokumenty/__projects__/carsim/src/fight/fight.cpp \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/fight/fight.cpp \
  /usr/include/stdc-predef.h \
- /home/gabriel/Dokumenty/__projects__/carsim/src/fight/./fight.h \
- /home/gabriel/Dokumenty/__projects__/carsim/src/fight/./../entities/entity.hpp \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/fight/./fight.h \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/fight/./../entities/entity.hpp \
  /usr/include/c++/15.2.1/utility \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -19,7 +19,7 @@ CMakeFiles/CarSim.dir/src/fight/fight.cpp.o: \
  /usr/include/c++/15.2.1/bits/move.h \
  /usr/include/c++/15.2.1/bits/utility.h \
  /usr/include/c++/15.2.1/initializer_list \
- /home/gabriel/Dokumenty/__projects__/carsim/src/fight/./draw_fight.h \
+ /home/gabriel/Dokumenty/__projects__/fun/carsim/src/fight/./draw_fight.h \
  /usr/include/raylib.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdarg.h \
  /usr/include/c++/15.2.1/string \
