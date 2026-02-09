@@ -1,7 +1,5 @@
 # Simple Grid-Based Game Demo / Prosta gra siatkowa 2D
 
-## English Version
-
 Description
 -----------
 This is a minimal 2D grid-based game built using **C++** and **Raylib**.
@@ -37,58 +35,5 @@ Dependencies
 Compile and Run
 ---------------
 ```bash
-g++ -std=c++17 -lraylib -o game main.cpp
-./game
-
-
-# Prosta gra siatkowa 2D
-
-## Polish Version
-
-## Opis
-
-Minimalna gra 2D oparta na siatce, napisana w **C++** z użyciem **Raylib**.  
-Gracz porusza się po siatce, w której losowo rozmieszczone są wrogowie i przedmioty.  
-Siatka przechowywana jest jako **jednowymiarowy wektor wskaźników do obiektów typu Entity**, a osobny wektor przechowuje same obiekty.
-
----
-
-## Funkcje
-
-- Ruch gracza za pomocą strzałek  
-- Losowe rozmieszczenie wrogów i przedmiotów  
-- Renderowanie siatki w 2D z kolorowymi prostokątami:
-  - Gracz: niebieski  
-  - Wróg: czerwony  
-  - Przedmiot: żółty  
-  - Puste pole: biały  
-- Wydajna implementacja 1D siatki z mapowaniem na 2D do rysowania  
-
----
-
-## Jak działa
-
-1. Klasa `Map`: zarządza encjami, siatką, ruchem i losowym rozmieszczeniem  
-2. Klasa `Draw`: rysuje siatkę za pomocą Raylib  
-3. Klasa `Window`: uruchamia pętlę gry, obsługuje wejście i rysowanie sceny  
-4. Interakcje gracza (wrogowie, przedmioty) obsługiwane są w `Map::moveObject()` i `Map::movePlayer()`  
-
----
-
-## Sterowanie
-
-- Strzałki: poruszanie graczem  
-
----
-
-## Wymagania
-
-- [Raylib](https://www.raylib.com/)  
-
----
-
-## Kompilacja i uruchomienie
-
-```bash
-g++ -std=c++17 -lraylib -o game main.cpp
+g++ -lraylib -o game main.cpp
 ./game
