@@ -20,17 +20,27 @@ void Window::init() {
     Map m(20,20,fight);
     Draw d;
     m.randomize();
+    m.computeGrid();
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-        if (!m.isPlayerAlive()) return;
-        DrawTexture(textures[(int)d.DrawBackground(m.findPlayerLocation())], 0, 0, WHITE);
-        d.drawMap(m.getGrid(), m.getWidth());
-        m.movePlayer(GetKeyPressed());
-        m.checkCollision();
+ 
+        int key = GetKeyPressed();
+        if (key != 0) {
+            m.movePlayer(key);
+            m.computeGrid();
+            m.checkCollision();
+        }
+
         float dt = GetFrameTime();
         fight.updateFight(dt);
+
+        DrawTexture(textures[(int)d.DrawBackground(m.getPlayerCell())], 0, 0, WHITE);
+        d.drawMap(m.getGrid(), m.getWidth());
+
         EndDrawing();
+
+        if (!m.isPlayerAlive()) break;
     }
 
     unloadTextures();

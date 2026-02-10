@@ -12,134 +12,112 @@ Map::Map(int w, int h, Fight& fightRef) : width(w), height(h), grid(width * heig
 
 //Map::Map() {}
 //TODO 
-//
-//Remake the map and how tiles work
-//So far tiles were single entity, but what if i want multiple entities on a single tile?
-//
-//
+// 
+// FIXME Overcomplicated Syntax + Method logic
 
-std::vector<Entity*> Map::get(int x, int y) { return grid[idx(x, y)]; }
+const std::vector<Entity*> Map::getEntitiesAt(int x, int y) const {
+    int coords = idx(x,y);
+    return grid[coords];
+}
+
+const std::vector<Entity*> Map::getPlayerCell() const {
+    return grid[idx(entities[0].x, entities[0].y)];
+}
+
+bool Map::isInsideGrid(Entity& e) const {
+    return (e.x >= 0 && e.x < height) && (e.y >= 0 && e.y < width);
+}
+
+void Map::setEntity(Entity& e) {
+    if (isInsideGrid(e))
+
+    grid[idx(e.x, e.y)]
+        .push_back(&e);
+}
 
 const std::vector<std::vector<Entity*>>& Map::getGrid() const { return grid; }
 
 const int Map::getWidth() const { return width; }
 
-void Map::set(int x, int y, Entity* e) { grid[idx(x, y)].insert(grid[idx(x, y)].begin(), e); }
+void Map::computeGrid() {
+    for (auto& cell : grid) cell.clear(); 
+
+    for (auto& entity : entities) {
+        setEntity(entity);
+    }
+}
 
 void Map::randomize() {
     if (entities.empty()) return;
 
+    // Assign player the first spot
     entities[0].type = EntityType::Player;
     entities[0].dmg = 35;
-    for (size_t i = 1; i < entities.size(); ++i) {
-        entities[i].type = (rand() % 2 == 0) ? EntityType::Enemy : EntityType::Item;
+    entities[0].x = 0;
+    entities[0].y = 0;
+    for (auto& entity : entities) {
+        if (entity.type == EntityType::Player) continue;
+        entity.type = (rand() % 2 == 0) ? EntityType::Enemy : EntityType::Item;
+        entity.x = rand() % width;
+        entity.y = rand() % height;
     }
-  
-    for (auto& row : grid) std::fill(row.begin(), row.end(), nullptr);
-
-    for (size_t i = 0; i < entities.size(); ++i) {
-        int r = rand() % grid.size() - 1;
-        grid[r].insert(grid[r].begin(), &entities[i]);
-    }
-
-    for (int i = 0; i < height; ++i) {
-        for (int j = 0; j < width; ++j) {
-            std::vector<Entity*>& e = grid[idx(i, j)];
-            
-            for (int k = 0; k < e.size(); k++) {
-                if (e[k]) {
-                    e[k]->x = i;
-                    e[k]->y = j;
-                }
-            }
-        }
-    }
-}
-
-bool Map::isInside(int x, int y) const {
-    return (x >= 0 && x < height) && (y >= 0 && y < width);
-}
-
-Entity* Map::findPlayer() {
-    for (std::vector<Entity*> e : grid) {
-        for (int k = 0; k < e.size(); k++) if (e.size() > 0 && e[k]->type == EntityType::Player) return e[k];
-    }
-    return nullptr;
 }
 
 bool Map::isPlayerAlive() {
-    Entity* player = findPlayer();
-    if (player->health <= 0) return false;
-    else return true;
-}
-
-std::vector<Entity*> Map::findPlayerLocation() {
-    for (std::vector<Entity*> e : grid) {
-        for (int k = 0; k < e.size(); k++) if (e.size() > 0 && e[k]->type == EntityType::Player) return e;
-    }
-    return std::vector<Entity*> {};
-}
-
-void Map::removeEntity(Entity* e) {
-    if (!e) return;
-
-    int i = idx(e->x, e->y);
-    auto& cell = grid[i];
-
-    cell.erase(
-        std::remove(cell.begin(), cell.end(), e),
-        cell.end()
-    );
+    Entity player = entities[0];
+    if (player.health <= 0) return false;
+    return true;
 }
 
 void Map::checkCollision() {
     if (!fight.fightState.fightOver) return;
 
     Entity* targetEntity = nullptr;
-    for (size_t i = 1; i < entities.size(); i++) {
-        if (entities[0].x == entities[i].x && entities[0].y == entities[i].y) {
-            targetEntity = &entities[i];
+    
+    Entity& player = entities[0];
+
+    for (auto& entity : entities) {
+        if (&entity == &player) continue;
+        if (entity.x == player.x && entity.y == player.y) {
+            targetEntity = &entity;
             break;
         }
     }
 
     if (targetEntity && targetEntity->type == EntityType::Enemy) {
         if (targetEntity->health > 0)
-        fight.startFight(entities[0], *targetEntity);
+        fight.startFight(player, *targetEntity);
  
-        if (targetEntity->health <= 0) removeEntity(targetEntity);
+        if (targetEntity->health <= 0) {
+            targetEntity->x = -1;
+            targetEntity->y = -1;
+        }
 
-        printf("Player colided at %d,%d\n", entities[0].x, entities[0].y);
+        //printf("Player colided at %d,%d\n", entities[0].x, entities[0].y);
     }
 }
 
-void Map::moveObject(int nx, int ny, Entity* obj) {
+void Map::moveObject(int nx, int ny, Entity& obj) {
     
-    int dx = obj->x + nx;
-    int dy = obj->y + ny;
+    int dx = obj.x + nx;
+    int dy = obj.y + ny;
 
-    if (!isInside(dx, dy)) return;
+    Entity newLocation;
+    newLocation.x = dx;
+    newLocation.y = dy;
 
-    //Push back the object to the target vector
-    grid[idx(dx, dy)].push_back(obj);
+    if (!isInsideGrid(newLocation)) return;
 
-    //Erase existing object in the previous vector
-    grid[idx(obj->x, obj->y)].erase(
-        std::remove_if(grid[idx(obj->x, obj->y)].begin(), grid[idx(obj->x, obj->y)].end(), 
-            [obj](Entity* e) {
-                return e == obj;
-        }),
-        grid[idx(obj->x, obj->y)].end()
-    );
-
-    obj->x = dx;
-    obj->y = dy;
+    obj.x = dx;
+    obj.y = dy;
 }
 
 void Map::movePlayer(int key) {
-  //TODO Add in the Cursor implementation and movement   
-    Entity* player = findPlayer();
-    if (!player) return;
+    if (entities.empty()) return;
+      
+    auto& player = entities[0];
+    
+    printf("Player location - x: %d , y: %d", player.x, player.y);
 
     switch (key) {
         case KEY_LEFT: moveObject(0, -1, player); break;

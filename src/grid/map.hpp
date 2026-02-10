@@ -25,29 +25,27 @@ public:
     
     Map(int w, int h, Fight& fightRef);
 
-    std::vector<Entity*> get(int x, int y);
+    const std::vector<Entity*> getEntitiesAt(int x, int y) const;
+
+    const std::vector<Entity*> getPlayerCell() const;
+
+    bool isInsideGrid(Entity& e) const;
+
+    void setEntity(Entity& e);
 
     const std::vector<std::vector<Entity*>>& getGrid() const;
 
     const int getWidth() const;
+ 
+    void computeGrid();
 
-    void set(int x, int y, Entity* target);
-  
     void randomize();
-
-    bool isInside(int x, int y) const;
-
-    Entity* findPlayer();
 
     bool isPlayerAlive();
 
-    std::vector<Entity*> findPlayerLocation();
- 
-    void removeEntity(Entity* e);
-
     void checkCollision();
 
-    void moveObject(int dx, int dy, Entity* obj);
+    void moveObject(int dx, int dy, Entity& obj);
 
     void movePlayer(int key);
 
